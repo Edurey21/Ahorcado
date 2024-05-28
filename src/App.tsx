@@ -1,7 +1,7 @@
-// App.tsx
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Hangman from "./components/Hangman";
 import Welcome from "./components/Welcome";
+import "./App.css";
 
 const wordCategories = {
   frutas: {
@@ -61,11 +61,25 @@ const wordCategories = {
   }
 };
 
+type WordCategories = typeof wordCategories;
+type CategoryKey = keyof WordCategories;
+
 function App() {
-  const [currentCategory, setCurrentCategory] = useState<string | null>(null);
+  const [currentCategory, setCurrentCategory] = useState<CategoryKey | null>(null);
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    const key = setInterval(() => {
+      setCount(count => count + 1);
+    }, 1000);
+
+    return () => {
+      clearInterval(key);
+    };
+  }, []);
 
   const selectRandomCategory = () => {
-    const categories = Object.keys(wordCategories);
+    const categories = Object.keys(wordCategories) as CategoryKey[];
     const randomIndex = Math.floor(Math.random() * categories.length);
     setCurrentCategory(categories[randomIndex]);
   };
@@ -87,9 +101,9 @@ function App() {
           </div>
         )}
       </div>
+      <div className="time-counter">{count} segundos jugados!!</div>
     </div>
   );
 }
 
 export default App;
-

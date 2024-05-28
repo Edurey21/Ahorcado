@@ -6,7 +6,7 @@ div {
   padding: 30px; /* Añade más espacio interno */
   border-radius: 30px; /* Bordes redondeados */
   box-shadow: 0 0 20px rgba(106, 13, 173, 0.3); /* Sombra suave */
-  animation: bounce 2s infinite alternate; /* Animación de rebote */
+  /*animation: bounce 2s infinite alternate;  Animación de rebote */
 }
 
 /* Estilos para el encabezado h1 */
@@ -103,3 +103,9 @@ p {
   margin-bottom: 20px; /* Añade espacio inferior */
 }
 
+/* Estilos para el contador de tiempo */
+.time-counter {
+  font-size: 2rem; /* Tamaño de fuente grande */
+  color: #6600cc; /* Morado medio */
+  margin-top: 20px; /* Añade espacio superior */
+}
